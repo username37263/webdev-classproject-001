@@ -31,7 +31,7 @@ Please refer to `mockup.jpg` in the repository.
 
 **GOAL** Build site to the `mockup.jpg` during class.
 
-Task 001: 
+Task 001:
 
 - [ ] Find and replace the quote in `index.html`
 
