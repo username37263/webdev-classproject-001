@@ -1,16 +1,23 @@
 @import url("reset.css");
 
 html {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
 
 body {
-	color: #333333;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	line-height: 1.6;
-	background-color: #f9f9f9;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensures the body takes the full viewport height */
+    margin: 0;
+    flex-direction: column; /* Stacks the quote box and speech tail */
 }
 
 h1,
@@ -19,56 +26,185 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Courier New", Courier, monospace;
-	font-weight: bold;
-	line-height: 1;
-	text-transform: uppercase;
-	margin: 0 0 1.6rem;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0 0 1.6rem;
 }
 
 p {
-	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.6;
-	margin: 0 0 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
 }
 
 a {
-	color: #0056b3;
-	border-bottom: 2px solid transparent;
-	transition: all 0.5s ease-in-out;
+    color: #0056b3;
+    border-bottom: 2px solid transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 a:hover {
-	color: #002348;
-	border-bottom: 2px solid #002348;
+    color: #002348;
+    border-bottom: 2px solid #002348;
 }
 
 hr {
-	margin: 3.2rem 1.6rem;
-	color: #555555;
-	border-color: #555555;
+    margin: 3.2rem 1.6rem;
+    color: #555555;
+    border-color: #555555;
 }
 
 /* Layout */
-
 .container {
-	padding: 0;
-	margin: 0 auto;
-	width: 100%;
-	max-width: 1000px;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Quote Box */
+.quote-box {
+    position: relative;
+    max-width: 600px;
+    background-color: #333;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 10px; /* Space between quote box and speech tail */
+}
+
+.quote-box::before {
+    content: "“";
+    font-size: 3rem;
+    color: #ffa500;
+    position: absolute;
+    top: -10px;
+    left: 15px;
+}
+
+.quote-box::after {
+    content: "”";
+    font-size: 3rem;
+    color: #ffa500;
+    position: absolute;
+    bottom: -10px;
+    right: 15px;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.quote-author {
+    font-size: 1rem;
+    color: #ffa500;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.speech-tail {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0 20px;
+    border-color: #333 transparent transparent transparent;
+    margin: 0 auto; /* Ensures it's horizontally centered */
+    position: relative;
+    top: -10px;
 }
 
 /* Media Queries */
 
-@media (min-width: 699px) {
+/* Small Screens (Phones) */
+@media (max-width: 699px) {
+    body {
+        font-size: 14px;
+    }
 
-	/* CSS HERE */
+    .quote-box {
+        max-width: 90%;
+        padding: 15px 20px;
+    }
 
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
+
+    .quote-box::before,
+    .quote-box::after {
+        font-size: 2.5rem;
+    }
+
+    .speech-tail {
+        border-width: 15px 15px 0 15px;
+    }
 }
 
-/* Desktop Media Query */
+/* Medium Screens (Tablets) */
+@media (min-width: 700px) and (max-width: 998px) {
+    body {
+        font-size: 15px;
+    }
+
+    .quote-box {
+        max-width: 80%;
+        padding: 18px 25px;
+    }
+
+    .quote-text {
+        font-size: 1.4rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+
+    .quote-box::before,
+    .quote-box::after {
+        font-size: 2.8rem;
+    }
+
+    .speech-tail {
+        border-width: 18px 18px 0 18px;
+    }
+}
+
+/* Large Screens (Desktops) */
 @media (min-width: 999px) {
+    body {
+        font-size: 16px;
+    }
 
-	/* CSS HERE */
+    .quote-box {
+        max-width: 600px;
+        padding: 20px 30px;
+    }
 
+    .quote-text {
+        font-size: 1.5rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+
+    .quote-box::before,
+    .quote-box::after {
+        font-size: 3rem;
+    }
+
+    .speech-tail {
+        border-width: 20px 20px 0 20px;
+    }
 }
